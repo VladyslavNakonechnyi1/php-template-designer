@@ -1,3 +1,17 @@
+<?php
+include 'includes/functions.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'] ?? 'Без імені';
+    $email = $_POST['email'] ?? 'Без email';
+    $message = $_POST['message'] ?? 'Без тексту';
+
+    $data_to_save = "Ім'я: $name | Email: $email | Повідомлення: $message" . PHP_EOL;
+    
+    file_put_contents('data/form_data.txt', $data_to_save, FILE_APPEND);
+    redirect("contact.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
